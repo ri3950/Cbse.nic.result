@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CBSE Portal - Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+    }
+    .form-container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 40px auto;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .submit-btn {
+      width: 100%;
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #003380;
+    }
+    #captcha {
+      font-size: 18px;
+      letter-spacing: 5px;
+      background: #f2f2f2;
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 20px 0;
+      border: 2px dashed #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Enter Details to View Result</h2>
+
+  <div class="form-container">
+    <input type="text" id="rollno" placeholder="Enter Roll Number"><br>
+    <input type="text" id="schoolno" placeholder="Enter School Number"><br>
+    <input type="text" id="admitid" placeholder="Enter Admit Card ID"><br>
+
+    <h3>Captcha</h3>
+    <div id="captcha">Loading...</div><br>
+    <input type="text" id="userInput" placeholder="Enter Captcha"><br>
+
+    <button onclick="validateCaptcha()" class="submit-btn">Submit</button>
+    <button onclick="generateCaptcha()" class="submit-btn" style="margin-top:10px;">Refresh Captcha</button>
+
+    <div id="message" style="margin-top:20px; font-size:18px;"></div>
+  </div>
+
+<script>
+function generateCaptcha() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  let captcha = '';
+  for (let i = 0; i < 6; i++) {
+    captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  document.getElementById('captcha').innerText = captcha;
+}
+
+function validateCaptcha() {
+  const captchaText = document.getElementById('captcha').innerText;
+  const userText = document.getElementById('userInput').value;
+  if (captchaText === userText) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerText = 'Captcha Verified Successfully!';
+    // After success you can redirect to result page
+    // window.location.href = 'result.html'; // If you have a separate result page
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerText = 'Incorrect Captcha. Try Again.';
+    generateCaptcha();
+  }
+  document.getElementById('userInput').value = '';
+}
+
+// Generate captcha on page load
+window.onload = generateCaptcha;
+</script>
+
+</body>
+</html>
