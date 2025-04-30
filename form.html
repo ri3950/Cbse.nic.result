@@ -38,6 +38,21 @@
         <div class="buttons">
           <button type="submit">Submit</button>
           <button type="reset" class="reset">Reset</button>
+           if (captchaText === userText) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerText = 'Captcha Verified Successfully!';
+    setTimeout(function() {
+      window.location.href = 'result.html';
+    }, 1000);
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerText = 'Incorrect Captcha. Try Again.';
+    generateCaptcha();
+  }
+  document.getElementById('userInput').value = '';
+}
+window.onload = generateCaptcha;
+</script>
         </div>
       </form>
 
