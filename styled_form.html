@@ -161,25 +161,7 @@ function validateForm() {
     return false;
   }
 }
-</script>
 
-</div>
-
-<script>
-function validateForm() {
-  const roll = document.getElementById("roll").value.trim();
-  const school = document.getElementById("school").value.trim();
-  const admit = document.getElementById("admit").value.trim().toUpperCase();
-  const pin = document.getElementById("pin").value.trim().toUpperCase();
-
-  if (roll === "25670493" && school === "81819" && admit === "RS498143" && pin === "PVODNI") {
-    window.location.href = "result.html";
-    return false;
-  } else {
-    document.getElementById("error-msg").innerText = "Invalid details. Please check and try again.";
-    return false;
-  }
-}
 </script>
 
 </body>
