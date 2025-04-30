@@ -1,30 +1,50 @@
-
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CBSE Portal - Home</title>
-  <style>
-    body { font-family: Arial, sans-serif; background-color: #e8f0fe; text-align: center; padding: 50px; }
-    h2 { color: #003366; }
-    .button {
-      background: linear-gradient(to right, #0047ab, #0099ff);
-      color: white; padding: 15px 30px; margin: 15px;
-      font-size: 1.2rem; border: none; border-radius: 8px; cursor: pointer;
-    }
-    .button:hover { background: linear-gradient(to right, #003380, #007acc); }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBSE Class XII Results 2024</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>केंद्रीय माध्यमिक शिक्षा बोर्ड</h2>
-  
-  <button class="button" onclick="window.location.href='https://www.cbse.gov.in/cbsenew/cbse.html'">मुख्य वेबसाइट / MAIN WEBSITE</button>
-  <button class="button" onclick="window.location.href='https://parikshasangam.cbse.gov.in/ps/'">परीक्षा संगम / PARIKSHA SANGAM</button>
- <button class="button" onclick="window.location.href='form.html'">परिणाम / RESULTS</button>
-  <button class="button" onclick="alert('सरस पेज पर जाने के लिए क्लिक किया गया!')">सरस / SARAS</button>
-  <button class="button" onclick="alert('शैक्षणिक वेबसाइट पर जाने के लिए क्लिक किया गया!')">शैक्षणिक वेबसाइट / ACADEMIC WEBSITE</button>
-  <button class="button" onclick="alert('प्रशिक्षण त्रिवेणी पेज पर जाने के लिए क्लिक किया गया!')">प्रशिक्षण त्रिवेणी / PRASHIKSHAN TRIVENI</button>
-  
+  <header>
+    <img src="https://cbseresults.nic.in/images/cbse-logo.png" alt="CBSE Logo">
+    <h1>Central Board of Secondary Education</h1>
+    <h2>https://cbseresults.nic.in</h2>
+    <h3>Examination Results 2024</h3>
+  </header>
+
+  <main>
+    <div class="container">
+      <h2>Senior School Certificate Examination (Class XII) Results 2024</h2>
+      <form>
+        <label>Enter Your Roll Number :</label>
+        <input type="text" placeholder="Roll Number" required>
+
+        <label>Enter School No. :</label>
+        <input type="text" placeholder="School Number" required>
+
+        <label>Enter Admit Card ID : <span class="hint">(as given on your admit card)</span></label>
+        <input type="text" placeholder="Admit Card Id" required>
+
+        <label>Enter Security Pin <span class="hint">(case sensitive)</span> :</label>
+        <input type="text" placeholder="Security Pin" required>
+
+        <div class="captcha">
+          <div class="code">D9TM11</div>
+          <button type="button">↻</button>
+        </div>
+
+        <div class="buttons">
+          <button type="submit">Submit</button>
+          <button type="reset" class="reset">Reset</button>
+        </div>
+      </form>
+
+      <p class="disclaimer">
+        <strong>Disclaimer :</strong> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET...
+      </p>
+    </div>
+  </main>
 </body>
 </html>
