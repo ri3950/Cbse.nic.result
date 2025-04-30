@@ -126,6 +126,8 @@
     <strong>Disclaimer :</strong> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for immediate information to the examinees. These cannot be treated as original mark sheets. Original mark sheets have been issued by the Board separately.
   </div>
   <script>
+let currentCaptcha = "";
+
 function generateCaptcha() {
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let captcha = "";
@@ -133,37 +135,34 @@ function generateCaptcha() {
     captcha += characters.charAt(Math.floor(Math.random() * characters.length));
   }
   document.getElementById("captcha").innerText = captcha;
-  return captcha;
+  currentCaptcha = captcha;  // update here
 }
 
-let currentCaptcha = "";
-
-window.onload = function() {
-  currentCaptcha = generateCaptcha();
-};
+window.onload = generateCaptcha;
 
 function validateForm() {
   const roll = document.getElementById("roll").value.trim();
   const school = document.getElementById("school").value.trim();
   const admit = document.getElementById("admit").value.trim().toUpperCase();
   const pin = document.getElementById("pin").value.trim().toUpperCase();
+  const captchaText = currentCaptcha;
 
   if (
     roll === "25670493" &&
     school === "81819" &&
     admit === "RS498143" &&
-    pin === currentCaptcha
+    pin === captchaText
   ) {
     window.location.href = "result.html";
     return false;
   } else {
     document.getElementById("error-msg").innerText = "Invalid details or captcha. Try again.";
-    currentCaptcha = generateCaptcha(); // refresh captcha on failure
+    generateCaptcha(); // refresh
     return false;
   }
 }
-  </script>
-  
+</script>
+
 </div>
 
 <script>
