@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,17 +66,6 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-
-      .refresh-btn {
-  background-color: #28a745; /* green color */
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
     }
     .submit-btn {
       background-color: #007bff;
@@ -86,6 +74,15 @@
     .reset-btn {
       background-color: #dc3545;
       color: white;
+    }
+    .refresh-btn {
+      background-color: #28a745; /* green color */
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
     }
     .disclaimer {
       font-size: 12px;
@@ -122,8 +119,7 @@
     <label>Enter Security Pin :</label>
     <div class="captcha-box">
       <div class="captcha" id="captcha"></div>
-      <button type="button" onclick="generateCaptcha()">↻</button>
-
+      <button type="button" onclick="generateCaptcha()" class="refresh-btn">↻</button>
       <input type="text" id="pin" placeholder="Security Pin" required>
     </div>
 
@@ -138,53 +134,50 @@
     <strong>Disclaimer :</strong> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for immediate information to the examinees. These cannot be treated as original mark sheets. Original mark sheets have been issued by the Board separately.
   </div>
   <script>
-let currentCaptcha = "";
+    let currentCaptcha = "";
 
-function generateCaptcha() {
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let captcha = "";
-  for (let i = 0; i < 6; i++) {
-    captcha += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  document.getElementById("captcha").innerText = captcha;
-  currentCaptcha = captcha;  // update here
-}
+    function generateCaptcha() {
+      const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      let captcha = "";
+      for (let i = 0; i < 6; i++) {
+        captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      document.getElementById("captcha").innerText = captcha;
+      currentCaptcha = captcha;  // update here
+    }
 
-window.onload = generateCaptcha;
+    window.onload = generateCaptcha;
 
-function validateForm() {
-  const roll = document.getElementById("roll").value.trim();
-  const school = document.getElementById("school").value.trim();
-  const admit = document.getElementById("admit").value.trim().toUpperCase();
-  const pin = document.getElementById("pin").value.trim().toUpperCase();
-  const captchaText = currentCaptcha;
+    function validateForm() {
+      const roll = document.getElementById("roll").value.trim();
+      const school = document.getElementById("school").value.trim();
+      const admit = document.getElementById("admit").value.trim().toUpperCase();
+      const pin = document.getElementById("pin").value.trim().toUpperCase();
+      const captchaText = currentCaptcha;
 
- } if (
-    roll === "25670493" &&
-    school === "81819" &&
-    admit === "RS498143" &&
-    pin === captchaText
-  ) {
-    window.location.href = "result.html"; //
-    
-
-  } else if (
-    roll === "25670425" &&
-    school === "81819" &&
-    admit === "AK428143" &&
-    pin === captchaText
-  ) {
-    window.location.href = "result2.html"; //
-    return false;
-      
-  } else {
-    document.getElementById("error-msg").innerText = "Invalid details or captcha. Try again.";
-    generateCaptcha(); // refresh
-    return false;
-  }
-}
-
-</script>
+      if (
+        roll === "25670493" &&
+        school === "81819" &&
+        admit === "RS498143" &&
+        pin === captchaText
+      ) {
+        window.location.href = "result.html";  // Redirect to result.html if matched
+        return false; // Prevent form submission
+      } else if (
+        roll === "25670425" &&
+        school === "81819" &&
+        admit === "AK428143" &&
+        pin === captchaText
+      ) {
+        window.location.href = "result2.html";  // Redirect to result2.html if matched
+        return false; // Prevent form submission
+      } else {
+        document.getElementById("error-msg").innerText = "Invalid details or captcha. Try again.";
+        generateCaptcha();  // Refresh captcha
+        return false;
+      }
+    }
+  </script>
 
 </body>
 </html>
