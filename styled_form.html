@@ -111,6 +111,7 @@
     <label>Enter Security Pin :</label>
     <div class="captcha-box">
       <div class="captcha" id="captcha"></div>
+      <button type="button" onclick="generateCaptcha()">↻</button>
 
       <input type="text" id="pin" placeholder="Security Pin" required>
     </div>
@@ -147,13 +148,23 @@ function validateForm() {
   const pin = document.getElementById("pin").value.trim().toUpperCase();
   const captchaText = currentCaptcha;
 
-const isValid =
-    (roll === "25670493" && school === "81819" && admit === "RS498143" && pin === captchaText) ||
-    (roll === "25670425" && school === "81819" && admit === "AK428143" && pin === captchaText);
+  if (
+    roll === "25670493" &&
+    school === "81819" &&
+    admit === "RS498143" &&
+    pin === captchaText
+  ) {
+    window.location.href = "result.html"; //
+    
 
-  if (isValid) {
-    window.location.href = "result.html";
-    return false; // Prevent form submission
+  } else if (
+    roll === "25670425" &&
+    school === "81819" &&
+    admit === "AK428143" &&
+    pin === captchaText
+  ) {
+    window.location.href = "result2.html"; //
+    return false;
       
   } else {
     document.getElementById("error-msg").innerText = "Invalid details or captcha. Try again.";
