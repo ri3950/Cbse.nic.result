@@ -155,6 +155,16 @@ function validateForm() {
   ) {
     window.location.href = "result.html";
     return false;
+
+    if (
+    roll === "25670425" &&
+    school === "81819" &&
+    admit === "AK428143" &&
+    pin === captchaText
+  ) {
+    window.location.href = "result.html";
+    return false;
+      
   } else {
     document.getElementById("error-msg").innerText = "Invalid details or captcha. Try again.";
     generateCaptcha(); // refresh
