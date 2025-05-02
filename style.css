@@ -56,7 +56,7 @@ body {
 }
 
 .button {
-  background: linear-gradient(to bottom center, #004466, #0099cc);
+  background: linear-gradient(to bottom right, #004466, #0099cc);
   color: white;
   padding: 20px 10px;
   font-size: 1rem;
@@ -64,7 +64,7 @@ body {
   border-radius: 10px;
   cursor: pointer;
   min-width: 220px;
-  height: 150px;
+  height: 100px;
   text-align: center;
   font-weight: bold;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
