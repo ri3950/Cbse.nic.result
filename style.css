@@ -1,39 +1,30 @@
 body {
   font-family: 'Noto Sans', sans-serif;
-  background-color: #e8f0fe;
+  background-color: #cbeef3; /* Light blue background from screenshot */
   margin: 0;
   padding: 0;
-}
-
-.topbar {
-  background-color: black;
-  color: white;
-  padding: 5px 10px;
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-.banner {
-  background: url('https://www.cbse.gov.in/cbsenew/images/header.png') no-repeat center;
-  background-size: cover;
-  height: 150px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-content {
   max-width: 1200px;
   margin: auto;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  padding-bottom: 20px;
+  background-color: transparent;
+  box-shadow: none;
+  padding-bottom: 0;
+  animation: fadeIn 1s ease-out;
 }
 
 .header {
-  background-color: #003366;
-  color: white;
-  padding: 15px;
+  background-color: transparent;
+  color: #003366;
+  padding: 10px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .header img {
@@ -48,56 +39,63 @@ body {
 
 .title {
   text-align: center;
-  padding: 40px 20px 20px;
+  padding: 20px 10px 10px;
 }
 
 .title h2 {
   color: #003366;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .button-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  justify-items: center;
   padding: 20px;
 }
 
 .button {
-  background: linear-gradient(to right, #0047ab, #0099ff);
+  background: linear-gradient(to bottom right, #004466, #0099cc);
   color: white;
-  padding: 15px 30px;
+  padding: 20px 10px;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  min-width: 250px;
+  min-width: 220px;
+  height: 100px;
   text-align: center;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   transition: background 0.3s ease;
 }
 
 .button:hover {
-  background: linear-gradient(to right, #003380, #007acc);
+  background: linear-gradient(to bottom right, #003355, #0077aa);
 }
 
 .footer {
-  background-color: #003366;
-  color: white;
+  background-color: transparent;
+  color: #333;
   text-align: center;
-  padding: 10px;
-  margin-top: 40px;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  padding: 10px 0;
 }
 
-
+/* Mobile responsiveness */
 @media (max-width: 768px) {
   .button-container {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
   }
 
   .button {
     min-width: 90%;
+    height: auto;
   }
 
   .header span {
@@ -109,12 +107,8 @@ body {
   }
 }
 
-/* Simple fade-in animation */
+/* Fade-in animation */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-.main-content {
-  animation: fadeIn 1s ease-out;
 }
