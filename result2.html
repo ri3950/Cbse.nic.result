@@ -187,23 +187,30 @@
   <!-- Include html2pdf.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <script>
-    function downloadPDF() {
-      const button = document.getElementById('downloadBtn');
-      button.style.display = 'none'; // hide before PDF
+  function downloadPDF() {
+    const button = document.getElementById('downloadBtn');
+    const note = document.querySelector('.note');
+    
+    // Hide download button and note section
+    button.style.display = 'none';
+    note.style.display = 'none';
 
-      const element = document.body;
-      const opt = {
-        margin:       0.2,
-        filename:     'CBSE_Result_Adarsh_Chauhan.pdf',
-        image:        { type: 'jpeg', quality: 0.98 },
-        html2canvas:  { scale: 2 },
-        jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-      };
+    const element = document.body;
 
-      html2pdf().from(element).set(opt).save().then(() => {
-        button.style.display = 'inline-block'; // show after save
-      });
-    }
-  </script>
+    const opt = {
+      margin: 0.2,
+      filename: 'CBSE_Result_Rishabh_Yadav.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save().then(() => {
+      // Show the hidden elements again
+      button.style.display = 'inline-block';
+      note.style.display = 'block';
+    });
+  }
+</script>
 </body>
 </html>
