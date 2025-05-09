@@ -25,8 +25,6 @@
       margin: 0 auto 8px;
     }
 
-    
-
     .title {
       font-size: 18px;
       margin: 15px 0;
@@ -77,13 +75,6 @@
       background-color: #f4f8ff;
     }
 
-    .result-status {
-      font-weight: bold;
-      font-size: 18px;
-      color: green;
-      margin: 20px 0;
-    }
-
     .note, .disclaimer {
       font-size: 12px;
       margin-top: 20px;
@@ -98,13 +89,16 @@
       font-weight: bold;
     }
 
+    .result-status {
+      font-weight: bold;
+      font-size: 18px;
+      color: green;
+      margin: 20px 0;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 10px;
-      }
-
-      .header h1 {
-        font-size: 18px;
       }
 
       .title {
@@ -131,11 +125,10 @@
     }
   </style>
 </head>
-
 <body>
+
   <div class="header">
     <img src="images/cbseResult.jpg" alt="CBSE Logo" />
-    
   </div>
 
   <div class="title">
@@ -185,31 +178,39 @@
   <div class="disclaimer">
     <p>Disclaimer: Neither NIC nor the CBSE is responsible for any inadvertent error that may have crept in the results being published on the net. The results published on net are for immediate information to the examinees. Kindly refer to mark sheets issued by the Board for final information.</p>
   </div>
-  <!-- Download Button -->
-<button id="downloadBtn" onclick="downloadPDF()" style="margin-top: 20px; padding: 10px 20px; background-color: #0033cc; color: white; border: none; border-radius: 5px; cursor: pointer;">
-  Download PDF
-</button>
 
-<!-- Include html2pdf.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script>
-  function downloadPDF() {
-    const button = document.getElementById('downloadBtn');
-    button.style.display = 'none'; // hide button before generating PDF
+  <button id="downloadBtn" onclick="downloadPDF()" style="margin-top: 20px; padding: 10px 20px; background-color: #0033cc; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Download PDF
+  </button>
 
-    const element = document.body;
-    const opt = {
-      margin:       0.2,
-      filename:     'CBSE_Result_Rishabh_Yadav.pdf',
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script>
+    function downloadPDF() {
+      const button = document.getElementById('downloadBtn');
+      button.style.display = 'none';
 
-    html2pdf().from(element).set(opt).save().then(() => {
-      button.style.display = 'inline-block'; // show button again after PDF download
-    });
-  }
-</script>
+      const element = document.body;
+
+      const opt = {
+        margin: 0.2,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+      };
+
+      html2pdf().from(element).set(opt).outputPdf('blob').then(function (pdfBlob) {
+        const blobUrl = URL.createObjectURL(pdfBlob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'CBSE_Result_Rishabh_Yadav.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        button.style.display = 'inline-block';
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
+      });
+    }
+  </script>
+
 </body>
 </html>
