@@ -185,5 +185,25 @@
   <div class="disclaimer">
     <p>Disclaimer: Neither NIC nor the CBSE is responsible for any inadvertent error that may have crept in the results being published on the net. The results published on net are for immediate information to the examinees. Kindly refer to mark sheets issued by the Board for final information.</p>
   </div>
+  <!-- Download Button -->
+<button onclick="downloadPDF()" style="margin-top: 20px; padding: 10px 20px; background-color: #0033cc; color: white; border: none; border-radius: 5px; cursor: pointer;">
+  Download PDF
+</button>
+
+<!-- Include html2pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  function downloadPDF() {
+    const element = document.body;
+    const opt = {
+      margin:       0.2,
+      filename:     'CBSE_Result_Rishabh_Yadav.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().from(element).set(opt).save();
+  }
+</script>
 </body>
 </html>
