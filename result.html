@@ -115,42 +115,46 @@
   <tr><td>029</td><td>GEOGRAPHY</td><td>22</td><td>30</td><td>52</td><td>C1</td></tr>
   <tr><td>301</td><td>ENGLISH CORE</td><td>64</td><td>20</td><td>84</td><td>A2</td></tr>
   <tr><td>048</td><td>PHYSICAL EDUCATION</td><td>58</td><td>28</td><td>86</td><td>A2</td></tr>
+  <tr><td>500</td><td>WORK EXPERIENCE</td><td>--</td><td>--</td><td>--</td><td>A1</td></tr>
+  <tr><td>502</td><td>HEALTH & PHYSICAL</td><td>--</td><td>--</td><td>--</td><td>A1</td></tr>
+  <tr><td>503</td><td>GENERAL STUDIES</td><td>--</td><td>--</td><td>--</td><td>B1</td></tr>
   <tr><td colspan="6" class="result">Result : PASS</td></tr>
 </table>
 
 <p><a href="styled_form.html">Check Another Result</a></p>
 
 <div class="note">
-  Note: Abbreviations used against Result: <br>
-  R.L. - Result Later (Your result is under preparation and it will be declared soon), N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent<br>
-  COMP – Compartment, UFM - Unfairmeans, XXXX - Improvement, SJD - Subjudice, N.R. - Not Registered, R.T - Repeat in Theory, R.P - Repeat in Practical, R.B. - Repeat in both
+  Note: Abbreviations used against Result:<br>
+  R.L. - Result Later, N.E. - Not Eligible, R.W. - Result Withheld, ABST - Absent,<br>
+  COMP – Compartment, UFM - Unfairmeans, XXXX - Improvement, SJD - Subjudice,<br>
+  N.R. - Not Registered, R.T - Repeat in Theory, R.P - Repeat in Practical, R.B. - Repeat in both
 </div>
 
 <div class="disclaimer">
-  <strong>Disclaimer:</strong> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for Immediate information to the examinees. These cannot be treated as original mark sheets. Original mark sheets have been issued by the Board separately.
+  <strong>Disclaimer:</strong> Neither NIC nor CBSE is responsible for any inadvertent error that may have crept in the results being published on NET. The results published on net are for immediate information to the examinees. These cannot be treated as original mark sheets. Original mark sheets have been issued by the Board separately.
 </div>
 
 <button id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script>
-function downloadPDF() {
-  const button = document.getElementById('downloadBtn');
-  button.style.display = 'none';
+  function downloadPDF() {
+    const button = document.getElementById('downloadBtn');
+    button.style.display = 'none';
 
-  const element = document.body;
-  const opt = {
-    margin: 0.2,
-    filename: 'CBSE_Result_Rishabh_Yadav.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2 },
-    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-  };
+    const element = document.body;
+    const opt = {
+      margin: 0.2,
+      filename: 'CBSE_Result_Rishabh_Yadav.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
 
-  html2pdf().set(opt).from(element).save().then(() => {
-    button.style.display = 'inline-block';
-  });
-}
+    html2pdf().set(opt).from(element).save().then(() => {
+      button.style.display = 'inline-block';
+    });
+  }
 </script>
 
 </body>
